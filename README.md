@@ -2,7 +2,11 @@
 
 ## Visual Studio Code - Setting Sync
 ### token
-5b9515d4c05cc1534499aeb7b0d730f9d092f035
+7ffb5212
+7f556ef8
+eb4907c7
+550b9687
+12673e86
 ### steps
 Shift + Alt + U
 
