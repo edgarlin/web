@@ -1,0 +1,26 @@
+{
+    "EntryID": "TEMPLATE",
+    "FormID": "F001",
+    "questions": [
+        {
+            "id": "001",
+            "order": 1,
+            "desc": "Please answer this question:",
+            "multiple": true,
+            "answers": [
+                {
+                    "id": "001",
+                    "order": 1,
+                    "type": "Checkbox/Radio/Text/Date",
+                    "desc": "Yes",
+                    "value": "Y",
+                    "is_memo": "Y",
+                    "memo": "memo",
+                    "date": "2018-09-10",
+                    "Aagent": "02344",
+                    "Aadmin": "04588"
+                }
+            ]
+        }
+    ]
+}
