@@ -1,5 +1,7 @@
 package com.demo;
 
+import java.util.Arrays;
+
 public class UsingLambda {
 	static class InnerClass implements SingleMethodInterface {
 		@Override
@@ -43,14 +45,16 @@ public class UsingLambda {
 		
 		// lambda expression
 		SingleMethodInterface s = (String parm) -> {
-			System.out.println("singleMethod from AnonymousClass");
+			System.out.println("singleMethod from lambda expression");
 			return parm;
 		};
 		s.singleMethod("NULL");
 		
-		// 
+		// lambda expression
+		s = (String parm) -> {return parm.toUpperCase();};
+		s = (parm) -> parm.toUpperCase();
 		s = parm -> parm.toUpperCase();
-		System.out.println(s.singleMethod("null"));
+		System.out.println(s.singleMethod(SingleMethodInterface.staticProperty));
 
 		
 		// method reference
