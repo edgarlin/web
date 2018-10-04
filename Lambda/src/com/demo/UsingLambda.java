@@ -51,6 +51,13 @@ public class UsingLambda {
 		s.singleMethod("NULL");
 		
 		// lambda expression
+		// input -> body
+		// ()    -> {}
+		// x     -> System.out.println(x)
+		// (int x,int y) -> {
+		//    return x+y;
+		// }
+		// (x,y) -> x+y
 		s = (String parm) -> {return parm.toUpperCase();};
 		s = (parm) -> parm.toUpperCase();
 		s = parm -> parm.toUpperCase();
