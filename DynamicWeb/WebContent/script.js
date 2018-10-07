@@ -1,25 +1,22 @@
+let regex = /abc/gm;
+
 //self invoking function
 (function ($) {
     $('self invoking function');
 })(function (param) {
-    console.log(param);
+    $('#msg').html(param);
 });
 
 
-//DOM
-var constructor = function (param) {
-    this.varInFunc2 = param;
-    var varInFunc = param;
-    var funcFunc = function (p) {
-        console.log(this);
-    }
-    //return this;
-    return {
-    };
-}
+//
+
+
+//
 var instance = new constructor('instance');
-console.log(typeof constructor);
-console.log(typeof instance);
+$('#msg').html($('#msg').html() + '<BR>' + instance.varInFunc2);
+$('#msg').html($('#msg').html() + '<BR>' + instance.varInFunc);
+
+
 var obj = new function (params) {
     var varFunc = 'v1';
     return {
@@ -35,7 +32,6 @@ $(obj.func1);
 
 // vue
 $(function () {
-    let regex = /abc/gm;
     var vueOptions = {
         el: '#app',
         data: {

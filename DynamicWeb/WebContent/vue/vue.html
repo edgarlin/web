@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <!--
+    <fieldset>
+        <legend>Question 1</legend>
+        <div>
+            <input type="checkbox" name="cb" id="cb1"><label for="cb1">answer 1</label>
+        </div>
+        <div>
+            <input type="checkbox" name="cb" id="cb2"><label for="cb2">answer 2</label>
+        </div>
+        <div>
+            <input type="checkbox" name="cb" id="cb3"><label for="cb3">answer 3</label>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Question 2</legend>
+        <input type="radio" name="r" id="r1"><label for="r1">answer 1</label>
+        <input type="radio" name="r" id="r2"><label for="r2">answer 2</label>
+        <input type="radio" name="r" id="r3"><label for="r3">answer 3</label>
+    </fieldset>
+    -->
+
+    <div id="app">
+        <ol>
+            <component-question v-for="ques in Qs" v-bind:question="ques" v-bind:key="ques.id"></component-question>
+        </ol>
+    </div>
+
+
+
+    <script>
+        Vue.component('component-answers', {
+            props: ['answer', 'question'],
+            template: `
+            <div>
+                <input type="radio" v-bind:name="question.id" v-bind:id="answer.id">
+                <label v-bind:for="answer.id">{{answer.desc}}</label>
+            </div>`
+        });
+        Vue.component('component-question', {
+            props: ['question'],
+            template: `
+            <fieldset>
+                <legend>{{question.desc}}</legend>
+                <component-answers v-for="ans in question.As" v-bind:question="question" v-bind:answer="ans" v-bind:key="ans.id">
+                </component-answers>
+            </fieldset>`
+        });
+        /*
+        Vue.component('Qs', {
+            template: '<Q v-for="Q in Qs"></Q>'
+        })
+        */
+        var app = new Vue({
+            el: '#app',
+            data: {
+                partyKey: '12345',
+                Qs: [{
+                    id: 1,
+                    desc: 'Q 1',
+                    As: [{
+                        id: 1,
+                        desc: 'a 1'
+                    }, {
+                        id: 2,
+                        desc: 'a 2'
+                    }]
+                }, {
+                    id: 2,
+                    desc: 'Q 2',
+                    As: [{
+                        id: 3,
+                        desc: 'answer 1'
+                    }, {
+                        id: 4,
+                        desc: 'answer 2'
+                    }]
+                }]
+            },
+            methods: {}
+        })
+    </script>
+</body>
+
+</html>

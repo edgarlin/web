@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <todo-item></todo-item>
+            <todo-item></todo-item>
+            <todo-item></todo-item>
+            <todo-item></todo-item>
+        </ol>
+        <ol>
+            <todo-item2 v-for="item in groceryList" v-bind:prop1="item" v-bind:key="item.id">
+            </todo-item2>
+        </ol>
+    </div>
+    <script>
+        Vue.component('todo-item', {
+            template: '<li>This is a todo</li>'
+        });
+        Vue.component('todo-item2', {
+            props: ['prop1'],
+            template: '<li>{{ prop1.text }}</li>'
+        });
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World',
+                groceryList: [
+                    { id: 0, text: 'Vegetables' },
+                    { id: 1, text: 'Cheese' },
+                    { id: 2, text: 'Whatever else humans are supposed to eat' }
+                ]
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
