@@ -24,181 +24,190 @@ import javax.servlet.http.HttpSessionListener;
  *
  */
 @WebListener
-public class DemoListener implements ServletContextListener, ServletContextAttributeListener, HttpSessionListener, HttpSessionAttributeListener, HttpSessionActivationListener, HttpSessionBindingListener, HttpSessionIdListener, ServletRequestListener, ServletRequestAttributeListener, AsyncListener {
-
-    /**
-     * Default constructor. 
-     */
-    public DemoListener() {
-    	System.err.println("DemoListener");
-    }
-
-	/**
-     * @see HttpSessionListener#sessionCreated(HttpSessionEvent)
-     */
-    public void sessionCreated(HttpSessionEvent se)  { 
-    	System.err.println("sessionCreated");
-    }
+public class DemoListener implements ServletContextListener, //
+		ServletContextAttributeListener, //
+		HttpSessionListener, //
+		HttpSessionAttributeListener, //
+		HttpSessionActivationListener, //
+		HttpSessionBindingListener, //
+		HttpSessionIdListener, //
+		ServletRequestListener, //
+		ServletRequestAttributeListener, //
+		AsyncListener {
 
 	/**
-     * @see ServletContextAttributeListener#attributeRemoved(ServletContextAttributeEvent)
-     */
-    public void attributeRemoved(ServletContextAttributeEvent scae)  { 
-    	System.err.println("attributeRemoved");
-    }
+	 * Default constructor.
+	 */
+	public DemoListener() {
+		System.err.println("DemoListener");
+	}
 
 	/**
-     * @see AsyncListener#onError(AsyncEvent)
-     */
-    public void onError(AsyncEvent arg0) throws java.io.IOException { 
-    	System.err.println("onError");
-    }
+	 * @see HttpSessionListener#sessionCreated(HttpSessionEvent)
+	 */
+	public void sessionCreated(HttpSessionEvent se) {
+		System.err.println("DemoListener sessionCreated");
+	}
 
 	/**
-     * @see HttpSessionIdListener#sessionIdChanged(HttpSessionEvent, String)
-     */
-    public void sessionIdChanged(HttpSessionEvent arg0, String arg1)  { 
-    	System.err.println("sessionIdChanged");
-    }
+	 * @see ServletContextAttributeListener#attributeRemoved(ServletContextAttributeEvent)
+	 */
+	public void attributeRemoved(ServletContextAttributeEvent scae) {
+		System.err.println("DemoListener attributeRemoved");
+	}
 
 	/**
-     * @see ServletRequestAttributeListener#attributeAdded(ServletRequestAttributeEvent)
-     */
-    public void attributeAdded(ServletRequestAttributeEvent srae)  { 
-    	System.err.println("attributeAdded");
-    }
+	 * @see AsyncListener#onError(AsyncEvent)
+	 */
+	public void onError(AsyncEvent arg0) throws java.io.IOException {
+		System.err.println("DemoListener onError");
+	}
 
 	/**
-     * @see AsyncListener#onTimeout(AsyncEvent)
-     */
-    public void onTimeout(AsyncEvent arg0) throws java.io.IOException { 
-    	System.err.println("onTimeout");
-    }
+	 * @see HttpSessionIdListener#sessionIdChanged(HttpSessionEvent, String)
+	 */
+	public void sessionIdChanged(HttpSessionEvent arg0, String arg1) {
+		System.err.println("DemoListener sessionIdChanged");
+	}
 
 	/**
-     * @see HttpSessionAttributeListener#attributeReplaced(HttpSessionBindingEvent)
-     */
-    public void attributeReplaced(HttpSessionBindingEvent se)  { 
-    	System.err.println("attributeReplaced");
-    }
+	 * @see ServletRequestAttributeListener#attributeAdded(ServletRequestAttributeEvent)
+	 */
+	public void attributeAdded(ServletRequestAttributeEvent srae) {
+		System.err.println("DemoListener attributeAdded");
+	}
 
 	/**
-     * @see HttpSessionActivationListener#sessionWillPassivate(HttpSessionEvent)
-     */
-    public void sessionWillPassivate(HttpSessionEvent se)  { 
-    	System.err.println("sessionWillPassivate");
-    }
+	 * @see AsyncListener#onTimeout(AsyncEvent)
+	 */
+	public void onTimeout(AsyncEvent arg0) throws java.io.IOException {
+		System.err.println("DemoListener onTimeout");
+	}
 
 	/**
-     * @see ServletContextListener#contextInitialized(ServletContextEvent)
-     */
-    public void contextInitialized(ServletContextEvent sce)  { 
-    	System.err.println("contextInitialized");
-    }
+	 * @see HttpSessionAttributeListener#attributeReplaced(HttpSessionBindingEvent)
+	 */
+	public void attributeReplaced(HttpSessionBindingEvent se) {
+		System.err.println("DemoListener attributeReplaced");
+	}
 
 	/**
-     * @see ServletContextAttributeListener#attributeAdded(ServletContextAttributeEvent)
-     */
-    public void attributeAdded(ServletContextAttributeEvent scae)  { 
-    	System.err.println("attributeAdded");
-    }
+	 * @see HttpSessionActivationListener#sessionWillPassivate(HttpSessionEvent)
+	 */
+	public void sessionWillPassivate(HttpSessionEvent se) {
+		System.err.println("DemoListener sessionWillPassivate");
+	}
 
 	/**
-     * @see AsyncListener#onComplete(AsyncEvent)
-     */
-    public void onComplete(AsyncEvent arg0) throws java.io.IOException { 
-    	System.err.println("onComplete");
-    }
+	 * @see ServletContextListener#contextInitialized(ServletContextEvent)
+	 */
+	public void contextInitialized(ServletContextEvent sce) {
+		System.err.println("DemoListener contextInitialized");
+	}
 
 	/**
-     * @see ServletRequestListener#requestDestroyed(ServletRequestEvent)
-     */
-    public void requestDestroyed(ServletRequestEvent sre)  { 
-    	System.err.println("requestDestroyed");
-    }
+	 * @see ServletContextAttributeListener#attributeAdded(ServletContextAttributeEvent)
+	 */
+	public void attributeAdded(ServletContextAttributeEvent scae) {
+		System.err.println("DemoListener attributeAdded");
+	}
 
 	/**
-     * @see ServletRequestAttributeListener#attributeRemoved(ServletRequestAttributeEvent)
-     */
-    public void attributeRemoved(ServletRequestAttributeEvent srae)  { 
-    	System.err.println("attributeRemoved");
-    }
+	 * @see AsyncListener#onComplete(AsyncEvent)
+	 */
+	public void onComplete(AsyncEvent arg0) throws java.io.IOException {
+		System.err.println("DemoListener onComplete");
+	}
 
 	/**
-     * @see AsyncListener#onStartAsync(AsyncEvent)
-     */
-    public void onStartAsync(AsyncEvent arg0) throws java.io.IOException { 
-    	System.err.println("onStartAsync");
-    }
+	 * @see ServletRequestListener#requestDestroyed(ServletRequestEvent)
+	 */
+	public void requestDestroyed(ServletRequestEvent sre) {
+		System.err.println("DemoListener requestDestroyed");
+	}
 
 	/**
-     * @see HttpSessionBindingListener#valueBound(HttpSessionBindingEvent)
-     */
-    public void valueBound(HttpSessionBindingEvent event)  { 
-    	System.err.println("valueBound");
-    }
+	 * @see ServletRequestAttributeListener#attributeRemoved(ServletRequestAttributeEvent)
+	 */
+	public void attributeRemoved(ServletRequestAttributeEvent srae) {
+		System.err.println("DemoListener attributeRemoved");
+	}
 
 	/**
-     * @see ServletRequestListener#requestInitialized(ServletRequestEvent)
-     */
-    public void requestInitialized(ServletRequestEvent sre)  { 
-    	System.err.println("requestInitialized");
-    }
+	 * @see AsyncListener#onStartAsync(AsyncEvent)
+	 */
+	public void onStartAsync(AsyncEvent arg0) throws java.io.IOException {
+		System.err.println("DemoListener onStartAsync");
+	}
 
 	/**
-     * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)
-     */
-    public void sessionDestroyed(HttpSessionEvent se)  { 
-    	System.err.println("sessionDestroyed");
-    }
+	 * @see HttpSessionBindingListener#valueBound(HttpSessionBindingEvent)
+	 */
+	public void valueBound(HttpSessionBindingEvent event) {
+		System.err.println("DemoListener valueBound");
+	}
 
 	/**
-     * @see HttpSessionActivationListener#sessionDidActivate(HttpSessionEvent)
-     */
-    public void sessionDidActivate(HttpSessionEvent se)  { 
-    	System.err.println("sessionDidActivate");
-    }
+	 * @see ServletRequestListener#requestInitialized(ServletRequestEvent)
+	 */
+	public void requestInitialized(ServletRequestEvent sre) {
+		System.err.println("DemoListener requestInitialized");
+	}
 
 	/**
-     * @see ServletContextListener#contextDestroyed(ServletContextEvent)
-     */
-    public void contextDestroyed(ServletContextEvent sce)  { 
-    	System.err.println("contextDestroyed");
-    }
+	 * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)
+	 */
+	public void sessionDestroyed(HttpSessionEvent se) {
+		System.err.println("DemoListener sessionDestroyed");
+	}
 
 	/**
-     * @see ServletRequestAttributeListener#attributeReplaced(ServletRequestAttributeEvent)
-     */
-    public void attributeReplaced(ServletRequestAttributeEvent srae)  { 
-    	System.err.println("attributeReplaced");
-    }
+	 * @see HttpSessionActivationListener#sessionDidActivate(HttpSessionEvent)
+	 */
+	public void sessionDidActivate(HttpSessionEvent se) {
+		System.err.println("DemoListener sessionDidActivate");
+	}
 
 	/**
-     * @see HttpSessionAttributeListener#attributeAdded(HttpSessionBindingEvent)
-     */
-    public void attributeAdded(HttpSessionBindingEvent se)  { 
-    	System.err.println("attributeAdded");
-    }
+	 * @see ServletContextListener#contextDestroyed(ServletContextEvent)
+	 */
+	public void contextDestroyed(ServletContextEvent sce) {
+		System.err.println("DemoListener contextDestroyed");
+	}
 
 	/**
-     * @see HttpSessionAttributeListener#attributeRemoved(HttpSessionBindingEvent)
-     */
-    public void attributeRemoved(HttpSessionBindingEvent se)  { 
-    	System.err.println("attributeRemoved");
-    }
+	 * @see ServletRequestAttributeListener#attributeReplaced(ServletRequestAttributeEvent)
+	 */
+	public void attributeReplaced(ServletRequestAttributeEvent srae) {
+		System.err.println("DemoListener attributeReplaced");
+	}
 
 	/**
-     * @see ServletContextAttributeListener#attributeReplaced(ServletContextAttributeEvent)
-     */
-    public void attributeReplaced(ServletContextAttributeEvent scae)  { 
-    	System.err.println("attributeReplaced");
-    }
+	 * @see HttpSessionAttributeListener#attributeAdded(HttpSessionBindingEvent)
+	 */
+	public void attributeAdded(HttpSessionBindingEvent se) {
+		System.err.println("DemoListener attributeAdded");
+	}
 
 	/**
-     * @see HttpSessionBindingListener#valueUnbound(HttpSessionBindingEvent)
-     */
-    public void valueUnbound(HttpSessionBindingEvent event)  { 
-    	System.err.println("valueUnbound");
-    }
-	
+	 * @see HttpSessionAttributeListener#attributeRemoved(HttpSessionBindingEvent)
+	 */
+	public void attributeRemoved(HttpSessionBindingEvent se) {
+		System.err.println("DemoListener attributeRemoved");
+	}
+
+	/**
+	 * @see ServletContextAttributeListener#attributeReplaced(ServletContextAttributeEvent)
+	 */
+	public void attributeReplaced(ServletContextAttributeEvent scae) {
+		System.err.println("DemoListener attributeReplaced");
+	}
+
+	/**
+	 * @see HttpSessionBindingListener#valueUnbound(HttpSessionBindingEvent)
+	 */
+	public void valueUnbound(HttpSessionBindingEvent event) {
+		System.err.println("DemoListener valueUnbound");
+	}
+
 }

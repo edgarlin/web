@@ -1,7 +1,5 @@
 package com.demo;
 
-import java.util.Arrays;
-
 public class UsingLambda {
 	static class InnerClass implements SingleMethodInterface {
 		@Override

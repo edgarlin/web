@@ -5,3 +5,6 @@ Content-Type: application/json
 {
     "json":"json"
 }
+
+###
+GET http://localhost:8080/DynamicWeb/Demo4JSP HTTP/1.1

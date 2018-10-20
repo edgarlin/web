@@ -33,7 +33,7 @@ public class DemoFilter implements Filter {
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		System.err.println("destroy");
+		System.err.println("DemoFilter destroy");
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class DemoFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// place your code here
-		System.err.println("doFilter");
+		System.err.println("DemoFilter doFilter");
 
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
@@ -51,7 +51,7 @@ public class DemoFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		System.err.println("init");
+		System.err.println("DemoFilter init");
 	}
 
 }
