@@ -2,10 +2,9 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>FORM</title>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <meta charset="UTF-8">
+    <title>FORM</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 
 <!--
@@ -16,8 +15,9 @@
 -->
 
 <body>
-	<div id="id_FORM2"></div>
-	<script>
+    <div id="id_FORM2">
+    </div>
+    <script>
 
         var Qs = [{
             id: 'Q0',
@@ -80,9 +80,6 @@
             }]
         }];
 
-        
-        
-        
         $.each(Qs, (ind_q, ele_q) => {
             var fieldset = $('<fieldset style="width:80%;">');
             var var_select = $('<select>');

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+	<!--
+	<table border="1" id="vue_table">
+		<thead>
+			<th>HEAD</th>
+		</thead>
+		<tr v-for="item of items">
+			<td><input type="text" v-model="item.val"></td>
+		</tr>
+		<tr v-for="item of items">
+			<td><input type="text" v-model="item.val"></td>
+		</tr>
+		<tfoot>
+			<td>FOOT</td>
+		</tfoot>
+	</table>
+	<script>
+			var dd = new Vue({
+				el: '#vue_table',
+				data: {
+					items: [{ val: '1' }, { val: '2' }, { val: '3' }, { val: '4' }]
+				}
+			});
+			console.log(dd.items);
+		</script>
+
+		<hr>
+
+
+	<ul id="example-1">
+		<li v-for="item of items">
+			{{ item.message }}
+		</li>
+		{{ items[0].message }}
+		<div v-for="(item, index) of items">
+			{{ parentMessage }} - {{ index }} - {{ item.message }}
+			<input v-model="item.message">
+		</div>
+	</ul>
+	<script>
+		var example1 = new Vue({
+			el: '#example-1',
+			data: {
+				items: [
+					{ message: 'Foo' },
+					{ message: 'Bar' }
+				]
+			}
+		});
+	</script>
+
+	-->
+
+	<hr>
+	<ul id="v-for-object" class="demo">
+		<li v-for="value in object">
+			{{ value }}
+		</li>
+		<div v-for="(value, key, index) in object">
+			{{ index }}. {{ key }}: {{ value }}
+		</div>
+	</ul>
+	<script>
+		var example2 = new Vue({
+			el: '#v-for-object',
+			data: {
+				object: {
+					firstName: 'John',
+					lastName: 'Doe',
+					age: 30
+				}
+			}
+		});
+	</script>
+
+	<hr>
+	<div id="id_vue">
+		<form ref="ref_form" method="post">
+			<input name="input_name" v-model="store.vital"> <a href="#" v-on:click="submit">SUBMIT</a>
+		</form>
+
+	</div>
+	<script>
+		var _store = {
+			vital: ''
+		};
+
+		var _submit = function () {
+			this.$refs.ref_form.submit()
+		};
+
+		var _option = {
+			el: "#id_vue",
+			data: {
+				store: _store
+			},
+			methods: {
+				submit: _submit
+			}
+		};
+
+		vm = new Vue(_option);
+	</script>
+
+
+
+	<hr>
+	<div id='id_div'>
+		<table border="1" width="100%">
+			<tr>
+				<th width="30%">1</th>
+				<th width="30%">2</th>
+				<th width="30%">3</th>
+				<th width="10%"><button v-on:click="items.push({});">+</button></th>
+			</tr>
+			<tr v-for="(item,index) in items">
+				<td>{{ index }}</td>
+				<td>{{ item.val }}</td>
+				<td>
+					<input type="text" v-model="item.val">
+				</td>
+				<td><button v-on:click="remove(index);">X</button></td>
+			</tr>
+		</table>
+		<div v-for="(item,index) in items">
+			<div>
+				<table border="1"></table>
+
+			</div>
+		</div>
+	</div>
+	<script>
+		var items = [{ val: 'a' }, { val: 'b' }, { val: 'c' }];
+		var test = new Vue({
+			el: '#id_div',
+			data: {
+				items: items
+			},
+			methods: {
+				remove: function (ind) {
+					items.splice(ind, 1);
+				}
+			}
+		});
+	</script>
+
+
+</body>
+
+</html>
