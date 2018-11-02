@@ -2,10 +2,159 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>FORM</title>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <meta charset="UTF-8">
+    <title>FORM</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+
+    <script>
+        var app = new function () {
+            return {
+
+                init: function () {
+
+                    var Qs = [{
+                        id: 'Q0',
+                        type: 't',
+                        desc: 'Question 0',
+                        ans: [{
+                            id: 'Q0_A1',
+                            desc: 'first name',
+                            memo: 'Y',
+                            placeholder: 'placeholder'
+                        }, {
+                            id: 'Q0_A2',
+                            desc: 'last name',
+                            memo: 'Y',
+                            placeholder: 'placeholder'
+                        }]
+                    }, {
+                        id: 'Q1',
+                        type: 'r',
+                        desc: 'Question 1',
+                        ans: [{
+                            id: 'Q1_A1',
+                            desc: 'Answer 1',
+                            memo: 'Y',
+                            placeholder: 'placeholder'
+
+                        }, {
+                            id: 'Q1_A2',
+                            desc: 'Answer 2',
+                            memo: 'N',
+                            placeholder: 'placeholder'
+
+                        }]
+                    }, {
+                        id: 'Q2',
+                        type: 'c',
+                        desc: 'Question 2',
+                        ans: [{
+                            id: 'Q2_A1',
+                            desc: 'Answer 1',
+                            memo: 'Y',
+                            placeholder: 'placeholder'
+
+                        }, {
+                            id: 'Q2_A2',
+                            desc: 'Answer 2',
+                            memo: 'Y',
+                            placeholder: 'placeholder'
+                        }]
+                    }, {
+                        id: 'Q3',
+                        type: 's',
+                        desc: 'Question 3',
+                        ans: [{
+                            id: 'Q3_A1',
+                            desc: 'Answer 1'
+                        }, {
+                            id: 'Q3_A2',
+                            desc: 'Answer 2'
+                        }]
+                    }];
+
+                    $.each(Qs, (ind_q, ele_q) => {
+                        var fieldset = $('<fieldset style="width:80%;">');
+                        var var_select = $('<select>');
+
+                        fieldset.append($('<legend>').text(ele_q.desc));
+                        if (ele_q.type == 's') {
+                            fieldset.append(var_select);
+                        }
+                        $('#id_FORM2').append(fieldset);
+                        $.each(ele_q.ans, (ind_a, ele_a) => {
+                            var ele;
+                            if (ele_q.type == 't') {
+                                ele = $('<input type="hidden">');
+                            } else if (ele_q.type == 'r') {
+                                ele = $('<input type="radio">');
+                                ele.on('change', (event, done) => {
+                                    event.preventDefault();
+                                    if (!done) {
+                                        ele.siblings('input[type="radio"]').trigger('change', true);
+                                    }
+                                });
+                            } else if (ele_q.type == 'c') {
+                                ele = $('<input type="checkbox">');
+                            } else if (ele_q.type == 's') {
+                                ele = $('<option>').val(ele_a.id).text(ele_a.desc);
+                                var_select.append(ele);
+                                return;
+                            } else {
+                                ele = $('<input type="hidden">');
+                            }
+                            ele.prop('id', 'id_' + ele_q.id + '_' + ele_a.id)
+                                .prop('tabindex', '-1')
+                                .prop('name', 'name_' + ele_q.id);
+
+                            fieldset.append(ele);
+                            fieldset.append($('<label>').text(ele_a.desc));
+
+                            if (ele_a.memo == 'Y') {
+                                var memo = $('<input type="text">');
+                                if (ele_q.type != 't') {
+                                    memo.prop('disabled', 'disabled');
+                                }
+                                memo.prop('id', 'id_' + ele_q.id + '_' + ele_a.id + '_memo')
+                                    .prop('placeholder', ele_a.placeholder)
+                                    .prop('tabindex', '-1');
+                                fieldset.append(memo);
+                                ele.on('change', (event, ) => {
+                                    event.preventDefault();
+                                    if (ele.prop('checked') == true) {
+                                        memo.prop('disabled', false);
+                                    } else {
+                                        memo.prop('disabled', 'disabled').val('');
+                                    }
+                                });
+                            }
+                            fieldset.append($('<br>'));
+                        });
+                    });
+
+                    var app = new Vue({
+                        el: '#app',
+                        data: {
+                            msg: 'message'
+                        }
+                    });
+
+                    Vue.component('vue-component', {
+                        template: '<h1>Vue-Component</h1>',
+                        props: ['parmFirst', 'parmSecond']
+                    })
+                }
+            }
+        };
+        $(app.init);
+    </script>
+
+    <script type="text/x-template" id="vue-component">
+        <div>COMPONENT
+        </div>
+    </script>
 </head>
 
 <!--
@@ -15,133 +164,11 @@
     Question Type : checkbox => c
 -->
 
+
+
 <body>
-	<div id="id_FORM2"></div>
-	<script>
-
-        var Qs = [{
-            id: 'Q0',
-            type: 't',
-            desc: 'Question 0',
-            ans: [{
-                id: 'Q0_A1',
-                desc: 'first name',
-                memo: 'Y',
-                placeholder: 'placeholder'
-            }, {
-                id: 'Q0_A2',
-                desc: 'last name',
-                memo: 'Y',
-                placeholder: 'placeholder'
-            }]
-        }, {
-            id: 'Q1',
-            type: 'r',
-            desc: 'Question 1',
-            ans: [{
-                id: 'Q1_A1',
-                desc: 'Answer 1',
-                memo: 'Y',
-                placeholder: 'placeholder'
-
-            }, {
-                id: 'Q1_A2',
-                desc: 'Answer 2',
-                memo: 'N',
-                placeholder: 'placeholder'
-
-            }]
-        }, {
-            id: 'Q2',
-            type: 'c',
-            desc: 'Question 2',
-            ans: [{
-                id: 'Q2_A1',
-                desc: 'Answer 1',
-                memo: 'Y',
-                placeholder: 'placeholder'
-
-            }, {
-                id: 'Q2_A2',
-                desc: 'Answer 2',
-                memo: 'Y',
-                placeholder: 'placeholder'
-            }]
-        }, {
-            id: 'Q3',
-            type: 's',
-            desc: 'Question 3',
-            ans: [{
-                id: 'Q3_A1',
-                desc: 'Answer 1'
-            }, {
-                id: 'Q3_A2',
-                desc: 'Answer 2'
-            }]
-        }];
-
-        
-        
-        
-        $.each(Qs, (ind_q, ele_q) => {
-            var fieldset = $('<fieldset style="width:80%;">');
-            var var_select = $('<select>');
-
-            fieldset.append($('<legend>').text(ele_q.desc));
-            if (ele_q.type == 's') {
-                fieldset.append(var_select);
-            }
-            $('#id_FORM2').append(fieldset);
-            $.each(ele_q.ans, (ind_a, ele_a) => {
-                var ele;
-                if (ele_q.type == 't') {
-                    ele = $('<input type="hidden">');
-                } else if (ele_q.type == 'r') {
-                    ele = $('<input type="radio">');
-                    ele.on('change', (event, done) => {
-                        event.preventDefault();
-                        if (!done) {
-                            ele.siblings('input[type="radio"]').trigger('change', true);
-                        }
-                    });
-                } else if (ele_q.type == 'c') {
-                    ele = $('<input type="checkbox">');
-                } else if (ele_q.type == 's') {
-                    ele = $('<option>').val(ele_a.id).text(ele_a.desc);
-                    var_select.append(ele);
-                    return;
-                } else {
-                    ele = $('<input type="hidden">');
-                }
-                ele.prop('id', 'id_' + ele_q.id + '_' + ele_a.id)
-                    .prop('tabindex', '-1')
-                    .prop('name', 'name_' + ele_q.id);
-
-                fieldset.append(ele);
-                fieldset.append($('<label>').text(ele_a.desc));
-
-                if (ele_a.memo == 'Y') {
-                    var memo = $('<input type="text">');
-                    if (ele_q.type != 't') {
-                        memo.prop('disabled', 'disabled');
-                    }
-                    memo.prop('id', 'id_' + ele_q.id + '_' + ele_a.id + '_memo')
-                        .prop('placeholder', ele_a.placeholder)
-                        .prop('tabindex', '-1');
-                    fieldset.append(memo);
-                    ele.on('change', (event, ) => {
-                        event.preventDefault();
-                        if (ele.prop('checked') == true) {
-                            memo.prop('disabled', false);
-                        } else {
-                            memo.prop('disabled', 'disabled').val('');
-                        }
-                    });
-                }
-                fieldset.append($('<br>'));
-            });
-        });
-    </script>
+    <h1 id='app'>{{ msg }}</h1>
+    <div id="id_FORM2"></div>
 </body>
 
 </html>

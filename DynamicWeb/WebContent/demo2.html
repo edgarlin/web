@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="components-demo">
+        <button-counter v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title"></button-counter>
+
+        <answer-type-memo></answer-type-memo>
+        <answer-type-options></answer-type-options>
+        <answer-type-checkbox></answer-type-checkbox>
+        <answer-type-radio></answer-type-radio>
+    </div>
+
+    <script>
+
+        Vue.component('answer-type-memo', {
+            props: ['answer-type-memo-name'],
+            template: '<input name="" type="text"></input>'
+        });
+
+        Vue.component('answer-type-options', {
+            props: ['answer-type-options-name'],
+            template: '<option></option>'
+        });
+
+        Vue.component('answer-type-checkbox', {
+            props: ['answer-type-checkbox-name'],
+            template: '<input v-bind:name="answer-type-checkbox-name" type="checkbox"></input>'
+        });
+
+        Vue.component('answer-type-radio', {
+            props: ['answer-type-radio-name'],
+            template: '<input type="radio"></radio>'
+        });
+
+
+        Vue.component('button-counter', {
+            props: ['title'],
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked {{ title }} {{ count }} times.</button>'
+        });
+
+
+
+        new Vue({
+            el: '#components-demo',
+            data: {
+                posts: [
+                    { id: 1, title: "first" },
+                    { id: 2, title: "second" }
+                ]
+            }
+        });
+    </script>
+
+</body>
+
+</html>
