@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://surveyjs.azureedge.net/1.0.53/survey.css" type="text/css" rel="stylesheet" />
+    <script src="https://surveyjs.azureedge.net/1.0.53/survey.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="surveyEditContainer"></div>
+    <div id="surveyViewContainer"></div>
+
+    <script>
+        var surveyJSON = {
+            title: "Tell us, what technologies do you use?", pages: [
+                {
+                    name: "page1",
+                    title: "page1_title",
+                    questions: [
+                        { type: "radiogroup", choices: ["Yes", "No"], isRequired: true, name: "frameworkUsing", title: "Do you use any front-end framework like Bootstrap?" },
+                        { type: "checkbox", choices: ["Bootstrap", "Foundation"], hasOther: true, isRequired: true, name: "framework", title: "What front-end framework do you use?", visibleIf: "{frameworkUsing} = 'Yes'" }
+                    ]
+                },
+                {
+                    name: "page2",
+                    title: "page2_title",
+                    questions: [
+                        { type: "radiogroup", choices: ["Yes", "No"], isRequired: true, name: "mvvmUsing", title: "Do you use any MVVM framework?" },
+                        { type: "checkbox", choices: ["AngularJS", "KnockoutJS", "React"], hasOther: true, isRequired: true, name: "mvvm", title: "What MVVM framework do you use?", visibleIf: "{mvvmUsing} = 'Yes'" }]
+                },
+                {
+                    name: "page3",
+                    title: "page2_title",
+                    questions: [
+                        { type: "comment", name: "about", title: "Please tell us about your main requirements for Survey library" }]
+                }
+            ]
+        };
+        var survey_edit = new Survey.Model(surveyJSON);
+        var survey_view = new Survey.Model(surveyJSON);
+        survey_edit.showPageTitles = true;
+        survey_view.showPageTitles = true;
+
+        var editComplete = function (survey) {
+            var resultAsString = JSON.stringify(survey.data);
+            survey_view.isSinglePage = true;
+            survey_view.data = JSON.parse(resultAsString);
+            //survey_view.mode = 'display';
+            $("#surveyViewContainer").Survey({
+                model: survey_view
+            });
+            //alert(resultAsString); //send Ajax request to your web server.
+        }
+        $("#surveyEditContainer").Survey({
+            model: survey_edit,
+            onComplete: editComplete
+        });
+    </script>
+</body>
+
+</html>
