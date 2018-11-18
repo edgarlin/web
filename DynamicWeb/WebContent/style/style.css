@@ -1,0 +1,46 @@
+#id {
+  color: aqua;
+} /* id */
+.class {
+  color: aqua;
+} /* class */
+div {
+  color: aqua;
+} /* element */
+div#ID {
+  color: aqua;
+}
+div.class {
+  color: aqua;
+}
+
+/* multiple */
+body,
+div {
+  color: aqua;
+}
+
+/* inside  */
+body div {
+  color: aqua;
+}
+
+/* attribute */
+div[id="id"] {
+  color: aqua;
+}
+
+/* psudo class  */
+a:hover {
+  color: aqua;
+}
+body:nth-child(1) {
+  color: aqua;
+}
+
+/* psudo element  */
+div::first-letter {
+}
+div::after {
+  content: "!";
+}
