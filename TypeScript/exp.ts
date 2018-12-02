@@ -1,3 +1,6 @@
+// tsc --module commonjs exp.ts
+// node exp.js
+
 export interface IExport1 {
   val: string;
 }
