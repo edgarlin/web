@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="https://surveyjs.azureedge.net/1.0.63/survey.jquery.js"></script>
+    <title>title</title>
+    <style>
+        .classname {
+            background-color: red;
+            border-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="surveyElement"></div>
+    <div id="surveyResult"></div>
+    <script>
+        Survey
+            .StylesManager
+            .applyTheme("default");
+
+        var css = {
+            root: "",
+            header: "classname",
+            body: "",
+            footer: "classname",
+            navigationButton: "button btn-lg",
+            completedPage: "",
+            navigation: {
+                complete: "",
+                prev: "",
+                next: "",
+                start: ""
+            },
+            progress: "classname",
+            progressBar: "classname",
+            page: {
+                root: "",
+                title: "classname",
+                description: "classname"
+            },
+            pageTitle: "classname",
+            pageDescription: "classname",
+            row: "",
+            question: {
+                mainRoot: "sv_qstn",
+                title: "classname",
+                description: "classname",
+                comment: "classname",
+                required: "",
+                titleRequired: "",
+                hasError: "has-error",
+                indent: 20
+            },
+            panel: {
+                title: "classname",
+                description: "classname",
+                container: "classname"
+            },
+            error: {
+                root: "alert alert-danger",
+                icon: "glyphicon glyphicon-exclamation-sign",
+                item: ""
+            },
+            boolean: {
+                root: "sv_qbln form-inline checkbox",
+                item: "",
+                label: "",
+                materialDecorator: "checkbox-material"
+            },
+            checkbox: {
+                root: "sv_qcbc sv_qcbx form-inline",
+                item: "classname",
+                itemControl: "classname",
+                controlLabel: "classname",
+                materialDecorator: "classname",
+                other: "classname"
+            },
+            comment: "form-control",
+            dropdown: {
+                root: "",
+                control: "classname",
+                other: "classname"
+            },
+            matrix: {
+                sv_q_radiogroup_other: "table table-striped",
+                label: "sv_q_m_label",
+                cellText: "sv_q_m_cell_text",
+                cellTextSelected: "sv_q_m_cell_selected bg-primary",
+                cellLabel: "sv_q_m_cell_label"
+            },
+            matrixdropdown: {
+                root: "table"
+            },
+            matrixdynamic: {
+                root: "table",
+                button: "button",
+                buttonAdd: "",
+                buttonRemove: ""
+            },
+            paneldynamic: {
+                root: "",
+                button: "button",
+                buttonPrev: "",
+                buttonNext: "",
+                buttonAdd: "",
+                buttonRemove: ""
+            },
+            multipletext: {
+                root: "table",
+                itemTitle: "",
+                itemValue: "sv_q_mt_item_value form-control"
+            },
+            radiogroup: {
+                root: "sv_qcbc form-inline",
+                item: "classname",
+                label: "classname",
+                itemControl: "classname",
+                controlLabel: "classname",
+                materialDecorator: "circle",
+                other: "classname",
+                clearButton: "classname"
+            },
+            imagepicker: {
+                root: "sv_imgsel",
+                item: "sv_q_imgsel",
+                label: "sv_q_imgsel_label",
+                itemControl: "sv_q_imgsel_control_item",
+                image: "sv_q_imgsel_image",
+                itemText: "sv_q_imgsel_text",
+                clearButton: "sv_q_radiogroup_clear"
+            },
+            rating: {
+                root: "btn-group",
+                item: "btn btn-default btn-secondary",
+                selected: "active",
+                minText: "sv_q_rating_min_text",
+                itemText: "sv_q_rating_item_text",
+                maxText: "sv_q_rating_max_text"
+            },
+            text: "classname",
+            expression: "form-control",
+            file: {
+                root: "sv_q_file",
+                placeholderInput: "sv_q_file_placeholder",
+                preview: "sv_q_file_preview",
+                removeButton: "sv_q_file_remove_button",
+                fileInput: "sv_q_file_input",
+                removeFile: "sv_q_file_remove"
+            },
+            saveData: {
+                root: "",
+                saving: "alert alert-info",
+                error: "alert alert-danger",
+                success: "alert alert-success",
+                saveAgainButton: ""
+            },
+            window: {
+                root: "modal-content",
+                body: "modal-body",
+                header: {
+                    root: "modal-header panel-title",
+                    title: "pull-left",
+                    button: "glyphicon pull-right",
+                    buttonExpanded: "glyphicon pull-right glyphicon-chevron-up",
+                    buttonCollapsed: "glyphicon pull-right glyphicon-chevron-down"
+                }
+            }
+        };
+        var json = {
+            pages: [
+                {
+                    name: "page_name",
+                    elements: [
+                        {
+                            type: "panel",
+                            name: "panel_name",
+                            elements: [
+                                {
+                                    type: "html",
+                                    name: "question8"
+                                }
+                            ],
+                            title: "panel title",
+                            description: "panel description",
+                            innerIndent: 10,
+                            indent: 5
+                        },
+                        {
+                            type: "text",
+                            name: "single_input",
+                            width: "30",
+                            indent: 5,
+                            title: "single_input_title",
+                            description: "single_input_description",
+                            commentText: "single_input_commentText",
+                            size: 20,
+                            maxLength: 30,
+                            placeHolder: "placeHolder"
+                        },
+                        {
+                            type: "checkbox",
+                            name: "checkbox_name",
+                            width: "30",
+                            indent: 5,
+                            title: "checkbox_title",
+                            description: "checkbox_description",
+                            requiredErrorText: "requiredErrorText",
+                            hasComment: true,
+                            choices: [
+                                "item1",
+                                "item2",
+                                "item3"
+                            ],
+                            otherText: "otherText",
+                            otherErrorText: "otherErrorText",
+                            colCount: 3,
+                            hasSelectAll: true,
+                            hasNone: true,
+                            noneText: "noneText",
+                            selectAllText: " selectAllText "
+                        },
+                        {
+                            type: "radiogroup",
+                            name: "radiogroup",
+                            width: "30",
+                            indent: 5,
+                            title: "radiogroup_title",
+                            description: "description",
+                            commentText: "commentText",
+                            requiredErrorText: "requiredErrorText",
+                            hasOther: true,
+                            choices: [
+                                "item1",
+                                "item2",
+                                "item3"
+                            ],
+                            otherText: "otherText",
+                            otherErrorText: "otherErrorText",
+                            colCount: 3,
+                            showClearButton: true
+                        }
+                    ],
+                    title: "page title",
+                    description: "page description"
+                }
+            ]
+        };
+        window.survey = new Survey.Model(json);
+
+        survey
+            .onComplete
+            .add(function (result) {
+                document
+                    .querySelector('#surveyResult')
+                    .innerHTML = "result: " + JSON.stringify(result.data);
+            });
+
+        $("#surveyElement").Survey({ model: survey, css: css });
+    </script>
+</body>
+
+</html>
