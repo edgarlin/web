@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- name space for prefix -->
+<!-- target name space for this XSD is the same as ws -->
+<!-- then ws could be a prefix for this XSD -->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ws="http://www.demo.com/demo_JAXB/demo_Package"
+	targetNamespace="http://www.demo.com/demo_JAXB/demo_Package">
+
+	<xsd:complexType name="demoClassName">
+		<xsd:sequence>
+			<xsd:element name="demoString" type="xsd:string" />
+			<xsd:element name="demoByte" type="xsd:byte" />
+		</xsd:sequence>
+	</xsd:complexType>
+ 
+<!-- 
+<xsd:element name="demoElement" type="ws:demoClassName" />
+ -->	
+</xsd:schema>
