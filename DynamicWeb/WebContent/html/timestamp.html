@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="divDate"></ul>
+    <script>
+      var divDate = window.document.getElementById("divDate");
+
+      var tsTPE = new Date();
+      var tzTPE = -8;
+      var tzDiff = tzTPE * 60 - new Date().getTimezoneOffset();
+      var tsLocal = new Date(tsTPE.getTime() - tzDiff * 1000);
+
+      var ts = tsLocal;
+
+      node = document.createElement("li");
+      node.append(ts.toLocaleString());
+      divDate.appendChild(node);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="id_body">
+      <input type="radio" id="id11" v-model="Z01" v-bind:value="true" />
+      <label for="id11">Yes</label>
+      <input type="radio" id="id12" v-model="Z01" v-bind:value="false" />
+      <label for="id12">No</label>
+      <hr />
+
+      <input type="radio" id="id21" v-model="Z02" v-bind:value="true" />
+      <label for="id21">Yes</label>
+      <input type="radio" id="id22" v-model="Z02" v-bind:value="false" />
+      <label for="id22">No</label>
+      <hr />
+
+      <input
+        type="checkbox"
+        name="Z01"
+        id="checkbox"
+        v-model="Z01"
+        style="display:none;"
+      />
+      <input
+        type="checkbox"
+        name="Z02"
+        id="checkbox"
+        v-model="Z02"
+        style="display:none;"
+      />
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#id_body",
+        data: {
+          Z01: null,
+          Z02: null
+        }
+      });
+    </script>
+  </body>
+</html>

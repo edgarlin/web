@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="vue-app">
+      <component-a-in-app
+        title="value of a"
+        v-bind:likes="55"
+        v-bind:is-published="false"
+        v-bind:comment-ids="[234, 266, 273]"
+        v-bind:author="{
+			name: 'Veronica',
+			company: 'Veridian Dynamics'
+		}"
+        v-on:my-event="display()"
+      ></component-a-in-app>
+      <component-b-in-app
+        title-b="titleb"
+        v-bind:likes-b="33"
+      ></component-b-in-app>
+    </div>
+    <script>
+      var componentA = {
+        inheritAttrs: false,
+        data: () => {
+          return {
+            count: 0
+          };
+        },
+        props: {
+          title: String,
+          likes: Number,
+          isPublished: Boolean,
+          commentIds: Array,
+          author: Object,
+          callback: Function,
+          requir: {
+            type: String,
+            required: false,
+            default: "A",
+            validator: function(value) {
+              return ["A"].indexOf(value) !== -1;
+            }
+          }
+        },
+        template:
+          "<div>{{ title }} = {{likes}} = {{isPublished}} ==> {{requir}}</div>",
+        methods: {
+          display: function() {
+            console.log("display");
+          }
+        }
+      };
+
+      var componentB = {
+        data: function() {
+          return {
+            count: 0
+          };
+        },
+        props: {
+          titleB: String,
+          likesB: Number
+        },
+        template:
+          "<div>BBBB<component-a-in-b v-bind:title='titleB' v-bind:likes='likesB'></component-a-in-b></div>",
+        components: {
+          "component-a-in-b": componentA
+        }
+      };
+
+      var app = new Vue({
+        el: "#vue-app",
+        components: {
+          "component-a-in-app": componentA,
+          "component-b-in-app": componentB
+        }
+      });
+    </script>
+  </body>
+  <!--           
+--></html>

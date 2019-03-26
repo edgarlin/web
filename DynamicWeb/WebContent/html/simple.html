@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <script>
+    var f1 = new function() {}();
+    console.log(f1);
+
+    
+    var regFunction = function() {
+      console.log(this);
+    };
+    var conFunction1 = function() {
+      this.v1 = 1;
+      console.log(this);
+      this.v2 = 1;
+    };
+    var conFunction2 = function() {
+      this.v1 = 2;
+      console.log(this);
+      this.v2 = 2;
+      return this;
+    };
+    var Demo = function() {
+      //this.var1 = 3;
+      //console.log(this);
+      //   return {
+      //     var2: 4,
+      //     f1: function() {
+      //       console.log(this);
+      //     },
+      //     f2: () => {
+      //       console.log(this);
+      //     }
+      //   };
+      return "Aa";
+    };
+    var bb = regFunction();
+    console.log(bb);
+    var cc = new conFunction1();
+    console.log(cc);
+    var dd = new conFunction2();
+    console.log(dd);
+    // var demo = new Demo();
+    // console.log(demo);
+    // demo.f1();
+    // demo.f2();
+    //Demo();
+    //Demo.call();
+    //Demo.apply();
+  </script>
+  <body></body>
+</html>
